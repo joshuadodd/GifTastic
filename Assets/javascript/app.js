@@ -57,7 +57,7 @@ $(document).ready(function() {
                         /*pulling the rating
                          */
                         var rating = results[j].rating;
-                        // console.log(rating);
+                        
                         var displayRated = $('<p>').text("Rating: " + rating);
                         $('#failView').prepend(displayRated);
 
