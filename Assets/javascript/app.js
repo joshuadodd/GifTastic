@@ -1,32 +1,33 @@
-// Initial array of emotions
+// Initial array of fails
 $(document).ready(function(){
-    var topics = ['Happy', 'Sassy', 'Frightened', 'Laughing', 'Scared', 'Mind Blown', 'Hungry', 'Confused'];
+    var topics = ['Wedding fail', 'Sports fail', 'Kid fail', 'Animal fail', 'Drunk fail', 'Driving fail'];
 
     // ========================================================
 
   //  create topics array buttons
-    function buttonExpress(){
+    
+    function buttonFail(){
         $('#buttonsView').empty();
         
         for ( var i=0; i < topics.length; i++) {
             //create all buttons
             var a = $('<button>');
-            a.addClass('expression');
+            a.addClass('results');
             a.attr('data-name', topics[i]);
             a.text(topics[i]);
             $('#buttonsView').append(a);
         }
     }    
-    buttonExpress();
+    buttonFail();
    
 
 //on button click
-  $(document).on('click', '.expression', function() {
+  $(document).on('click', '.results', function() {
 
-    var express = $(this).html(); 
-    console.log(express);
+    var fail = $(this).html(); 
+    console.log(fail);
     
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + express + "&api_key=dc6zaTOxFJmzC&limit=10";
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + fail + "&api_key=5c71d8a3ce494d76a335c4172e55f742";
         // console.log(queryURL);
         $.ajax({url: queryURL, method: 'GET'})
         .done(function(response) {
@@ -34,23 +35,23 @@ $(document).ready(function(){
             var results = response.data;
             // console.log(results);
             //empties the div before adding more gifs
-            $('#expressView').empty();
+            $('#failView').empty();
                 //loops through the data
                 for ( var j=0; j < results.length; j++) {
                     var imageDiv = $('<div>');
                     var imageView = results[j].images.fixed_height.url;
                     var still = results[j].images.fixed_height_still.url;
                         // console.log(imageView);  
-                    var expressImage = $('<img>').attr("src", still).attr('data-animate', imageView).attr('data-still', still);
-                    expressImage.attr('data-state', 'still');
-                    $('#expressView').prepend(expressImage);
-                    expressImage.on('click', playGif);
+                    var failImage = $('<img>').attr("src", still).attr('data-animate', imageView).attr('data-still', still);
+                    failImage.attr('data-state', 'still');
+                    $('#failView').prepend(failImage);
+                    failImage.on('click', playGif);
                     
                     // pulling the rating
                         var rating = results[j].rating;
                             // console.log(rating);
                         var displayRated= $('<p>').text("Rating: " + rating);
-                        $('#expressView').prepend(displayRated);
+                        $('#failView').prepend(displayRated);
             
                 } //for loop
         }); // done response
@@ -66,7 +67,7 @@ $(document).ready(function(){
                      $(this).attr('data-state', 'still');
                     }
 
-                } //on click express
+                } //on click fail
                 
     }) // document on click
 
@@ -74,15 +75,15 @@ $(document).ready(function(){
 
 
 //adding new button
-$(document).on('click', '#addExpress', function(){
-    if ($('#express-input').val().trim() == ''){
+$(document).on('click', '#addFail', function(){
+    if ($('#fail-input').val().trim() == ''){
       alert('Input can not be left blank');
    }
    else {
-    var express = $('#express-input').val().trim();
-    topics.push(express);
-    $('#express-input').val('');
-    buttonExpress();
+    var fail = $('#fail-input').val().trim();
+    topics.push(fail);
+    $('#fail-input').val('');
+    buttonFail();
     return false;
 
     }
