@@ -4,16 +4,17 @@
 $(document).ready(function() {
     var topics = ['Wedding fail', 'Sports fail', 'Kid fail', 'Animal fail', 'Drunk fail', 'Driving fail'];
 
-    /*  create topics array buttons
-     *
-     */
+    /* create topics array buttons */
+     
+     
 
     function buttonFail() {
         $('#buttonsView').empty();
 
         for (var i = 0; i < topics.length; i++) {
-            /*create all buttons
-            */
+
+            /* create all buttons */
+            
             var a = $('<button>');
             a.addClass('results');
             a.attr('data-name', topics[i]);
@@ -24,8 +25,8 @@ $(document).ready(function() {
     buttonFail();
 
 
-    /*on button click
-     */
+    /* on button click */
+     
     $(document).on('click', '.results', function() {
 
             var fail = $(this).html();
@@ -35,15 +36,15 @@ $(document).ready(function() {
 
             $.ajax({ url: queryURL, method: 'GET' })
                 .done(function(response) {
-                    /*grabs the data
-                     */
+                    /* grabs the data */
+                     
                     var results = response.data;
 
-                    /*empties the div before adding more gifs
-                     */
+                    /* empties the div before adding more gifs */
+                     
                     $('#failView').empty();
-                    /*loops through the data
-                     */
+                    /* loops through the data */
+                     
                     for (var j = 0; j < results.length; j++) {
                         var imageDiv = $('<div>');
                         var imageView = results[j].images.fixed_height.url;
@@ -54,8 +55,8 @@ $(document).ready(function() {
                         $('#failView').prepend(failImage);
                         failImage.on('click', playGif);
 
-                        /*pulling the rating
-                         */
+                        /* pulling the rating */
+                         
                         var rating = results[j].rating;
                         
                         var displayRated = $('<p>').text("Rating: " + rating);
@@ -76,18 +77,18 @@ $(document).ready(function() {
                 }
 
             }
-            /*on click fail
-             */
+            /* on click fail */
+             
 
         })
-        /* document on click
-         */
+        /* document on click */
+         
 
 
 
 
-    /*adding new button
-     */
+    /* adding new button */
+     
     $(document).on('click', '#addFail', function() {
         if ($('#fail-input').val().trim() == '') {
             alert('Input can not be left blank');
