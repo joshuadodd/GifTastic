@@ -1,6 +1,5 @@
-/* Initial array of fails
- *
- */
+/* Initial array of fails */
+ 
 $(document).ready(function() {
     var topics = ['Wedding fail', 'Sports fail', 'Kid fail', 'Animal fail', 'Drunk fail', 'Driving fail'];
 
