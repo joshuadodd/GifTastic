@@ -1,8 +1,8 @@
-# HW - Giftastic!
+# Giftastic!
 
 ## Description on how to use the app
 
-## Homework Requirements
+## Overview
 
 1. Create a page with buttons that will generate 10 gifs from the GIPHY API
 2. The current animated state of the gif should be toggled by clicking on the gif to either still or animate 
@@ -17,7 +17,6 @@
 - Google Fonts 
 
 ## Code Explained
-- I tried to keep my code clean. I declared my variables at the top which consists of a function and an array.
 - Below the declared variables are three event listeners 
 	1. One listens for clicks on the topic buttons
 	2. One listens to clicks on the gifs 
